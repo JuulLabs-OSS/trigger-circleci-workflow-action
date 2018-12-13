@@ -9,4 +9,4 @@ LABEL "com.github.actions.color"="blue"
 
 COPY trigger-circleci-workflow.sh .
 
-ENTRYPOINT ["trigger-circleci-workflow.sh"]
+ENTRYPOINT ["./trigger-circleci-workflow.sh"]
