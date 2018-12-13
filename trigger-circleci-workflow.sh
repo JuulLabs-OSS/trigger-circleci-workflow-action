@@ -11,7 +11,7 @@ echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
 	echo >&2 "Environment variable GITHUB_REF is unset"
 	exit 1
 }
-echo "GITHUB_REF=$GITHUB_REPOSITORY"
+echo "GITHUB_REF=$GITHUB_REF"
 
 GITHUB_OWNER="$(echo "$GITHUB_REPOSITORY" | cut -f1 -d/)"
 GITHUB_REPO="$(echo "$GITHUB_REPOSITORY" | cut -f2 -d/)"
