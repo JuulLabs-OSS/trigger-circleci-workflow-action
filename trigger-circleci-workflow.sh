@@ -3,13 +3,15 @@
 set -e
 
 [ -z "$GITHUB_REPOSITORY" ] && {
-	echo "Environment variable GITHUB_REPOSITORY is unset"
+	echo >&2 "Environment variable GITHUB_REPOSITORY is unset"
 	exit 1
 }
+echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
 [ -z "$GITHUB_REF" ] && {
-	echo "Environment variable GITHUB_REF is unset"
+	echo >&2 "Environment variable GITHUB_REF is unset"
 	exit 1
 }
+echo "GITHUB_REF=$GITHUB_REPOSITORY"
 
 GITHUB_OWNER="$(echo "$GITHUB_REPOSITORY" | cut -f1 -d/)"
 GITHUB_REPO="$(echo "$GITHUB_REPOSITORY" | cut -f2 -d/)"
