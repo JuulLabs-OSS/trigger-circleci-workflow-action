@@ -7,6 +7,6 @@ LABEL "com.github.actions.description"="Trigger CircleCI workflow again when a P
 LABEL "com.github.actions.icon"="activity"
 LABEL "com.github.actions.color"="blue"
 
-COPY trigger-circleci-workflow.sh .
+COPY trigger-circleci-workflow.sh /usr/bin/trigger-circleci-workflow.sh
 
-ENTRYPOINT ["./trigger-circleci-workflow.sh"]
+ENTRYPOINT ["trigger-circleci-workflow.sh"]
