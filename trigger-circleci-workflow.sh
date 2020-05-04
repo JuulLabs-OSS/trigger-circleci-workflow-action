@@ -7,20 +7,14 @@ set -e
 	exit 1
 }
 echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
-[ -z "$GITHUB_REF" ] && {
-	echo >&2 "Environment variable GITHUB_REF is unset"
-	exit 1
-}
-echo "GITHUB_REF=$GITHUB_REF"
+echo "BRANCH_NAME=$BRANCH_NAME"
 
 GITHUB_OWNER="$(echo "$GITHUB_REPOSITORY" | cut -f1 -d/)"
 GITHUB_REPO="$(echo "$GITHUB_REPOSITORY" | cut -f2 -d/)"
-GITHUB_BRANCH="$(echo "$GITHUB_REF" | cut -c 12-)"
 
-echo "Triggering CircleCI workflow for the following. $GITHUB_OWNER/$GITHUB_REPO - $GITHUB_BRANCH"
+echo "Triggering CircleCI workflow for the following. $GITHUB_OWNER/$GITHUB_REPO - $BRANCH_NAME"
 
-curl -u "$CIRCLE_TOKEN": \
-    --silent --show-error --fail \
+curl -u "$CIRCLECI_TOKEN": \
 	-X POST --header "Content-Type: application/json" \
-	-d "{\"branch\":\"$GITHUB_BRANCH\"}" \
+	-d "{\"branch\":\"$BRANCH_NAME\"}" \
 	"https://circleci.com/api/v1.1/project/github/$GITHUB_OWNER/$GITHUB_REPO/build"
